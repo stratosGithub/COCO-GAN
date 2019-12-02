@@ -2,7 +2,8 @@ import os
 import glob
 import numpy as np
 import fid
-from scipy.misc import imread
+import imageio
+# from scipy.misc import imread
 import tensorflow as tf
 
 from img_utils import get_celeba_image, get_image, get_celeba_hq_image

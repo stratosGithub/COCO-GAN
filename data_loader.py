@@ -11,6 +11,7 @@ class DataLoader():
         self.c_dim = self.config["data_params"]["c_dim"]
         self.dataset = config["data_params"]["dataset"].lower()
         self.coordinate_system = config["data_params"]["coordinate_system"]
+        self.base_dataset_dir = config["data_params"]["base_dataset_dir"]
 
         assert self.dataset in {
             "celeba",

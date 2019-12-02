@@ -1,6 +1,7 @@
 data_params:
   # dataset options: "celeba", "celeba-syn-inward", "celeba-syn-outward", "celeba-hq", "lsun", "mp3d",
   dataset: "celeba"
+  base_dataset_dir: "/media/stratos/DATA/Datasets/celeba/CelebA"
   c_dim: 3
   full_image_size: [64, 64] # [height, width], supports x!=y
   macro_patch_size: [32, 32] # Ideally supports x!=y, but I have never used it

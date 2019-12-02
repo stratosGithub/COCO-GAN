@@ -1,5 +1,7 @@
-import scipy.misc
+# import scipy.misc
+import skimage
 import numpy as np
+import imageio
 
 def get_image(image_path, input_height, input_width, resize_height=64, resize_width=64, byte_image=True):
     image = imread(image_path)
@@ -20,9 +22,11 @@ def save_images(images, size, image_path):
 
 def imread(path, grayscale = False):
     if (grayscale):
-        return scipy.misc.imread(path, flatten = True).astype(np.float)
+        # return scipy.misc.imread(path, flatten = True).astype(np.float)
+        return imageio.imread(path, asgrey=True).astype(np.float)
     else:
-        return scipy.misc.imread(path).astype(np.float)
+        # return scipy.misc.imread(path).astype(np.float)
+        return imageio.imread(path).astype(np.float)
 
 def merge_images(images, size):
     return inverse_transform(images)
@@ -49,7 +53,8 @@ def merge(images, size):
 
 def imsave(images, size, path):
     image = np.squeeze(merge(images, size))
-    return scipy.misc.imsave(path, image)
+    # return scipy.misc.imsave(path, image)
+    return imageio.imsave(uri=path, im=image)
 
 def center_crop(x, crop_h, crop_w, resize_h=64, resize_w=64):
     if crop_w is None:
@@ -57,10 +62,12 @@ def center_crop(x, crop_h, crop_w, resize_h=64, resize_w=64):
     h, w = x.shape[:2]
     j = int(round((h - crop_h)/2.))
     i = int(round((w - crop_w)/2.))
-    return scipy.misc.imresize(x[j:j+crop_h, i:i+crop_w], [resize_h, resize_w])
+    # return scipy.misc.imresize(x[j:j+crop_h, i:i+crop_w], [resize_h, resize_w])
+    return skimage.transform.resize(x[j:j+crop_h, i:i+crop_w], output_shape=(resize_h, resize_w), order=3)
 
 def transform(image, input_height, input_width, resize_height=64, resize_width=64, byte_image=True):
-    cropped_image = scipy.misc.imresize(image, [resize_height, resize_width])
+    # cropped_image = scipy.misc.imresize(image, [resize_height, resize_width])
+    cropped_image = skimage.transform.resize(image, output_shape=(resize_height, resize_width), order=3)
     if byte_image:
         return np.array(cropped_image).astype(np.uint8)
     else:

@@ -81,6 +81,6 @@ def check_link(in_dir, basename, out_dir):
         os.symlink(rel_link, link_file)
 
 if __name__ == '__main__':
-    base_path = './data'
+    base_path = '/media/stratos/DATA/Datasets'
     prepare_data_dir()
     download_celeb_a(base_path)

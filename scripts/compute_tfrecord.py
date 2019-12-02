@@ -19,7 +19,7 @@ parser.add_argument('--img_paths', type=str, default=None)
 parser.add_argument('--resolution', type=int, default=None)
 args = parser.parse_args()
 
-root_path = "./data/"
+root_path = "/media/stratos/DATA/Datasets/" #./data/"
 
 """Constants for dataset setup"""
 res_x, res_y = args.resolution, args.resolution
